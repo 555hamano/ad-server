@@ -15,13 +15,14 @@ CREATE TABLE `campaigns` (
   `cpc` int(11) default '0',
   `ecpm` int(10) unsigned default '0',
   `budget` int(10) unsigned default '0',
-  PRIMARY KEY  (`id`),
-  KEY `age_range_id` (`age_range_id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB
 ;
 
+alter table campaigns add foreign key (age_range_id) references age_ranges(id);
+
 CREATE TABLE `demographics` (
-  `uuid` int(10) unsigned NOT NULL auto_increment,
+  `uuid` tinyint(3) unsigned NOT NULL auto_increment,
   `sex` tinyint(3) unsigned NOT NULL default '0',
   `age` tinyint(3) unsigned NOT NULL default '0',
   PRIMARY KEY  (`uuid`)
